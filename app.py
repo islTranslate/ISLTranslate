@@ -21,8 +21,8 @@ def main():
     st.write(font_css, unsafe_allow_html=True)
     #tabs = st.tabs(('Style Transfer'))
 
-    with tabs[0]:
-        playVid()
+    
+    playVid()
 
 def playVid():
 
