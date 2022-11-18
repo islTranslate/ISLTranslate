@@ -1,2 +1,4 @@
 opencv-python-headless
 streamlit==0.73.1
+streamlit-bokeh-events==0.1.2
+bokeh
