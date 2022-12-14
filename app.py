@@ -4,7 +4,7 @@ import numpy as np
 import streamlit as st
 import requests
 import os
-import nltk_download_utils.py
+import nltk_download_utils
 
 # Home UI 
 
