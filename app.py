@@ -4,11 +4,7 @@ import numpy as np
 import streamlit as st
 import requests
 import os
-import nltk
-#from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize, sent_tokenize
-from nltk.stem import WordNetLemmatizer
-from nltk.corpus import wordnet
+import nltk_download_utils.py
 
 # Home UI 
 
