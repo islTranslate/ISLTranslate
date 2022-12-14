@@ -20,9 +20,7 @@ def main():
         """
 
     st.write(font_css, unsafe_allow_html=True)
-
-    
-    panorama()
+    translate()
 
 # Pre-process Image
 def preProcessImg(img):
@@ -33,58 +31,20 @@ def preProcessImg(img):
     img = cv2.resize(img,(width,height))
     return img
 
-# Upload Image
-def uploadImages(key):
 
-    uploaded_files = st.file_uploader("Choose Image files in Proper sequence",key=key,accept_multiple_files=True)
-    imgs = list()
-    for file in uploaded_files:
-        file_bytes = np.asarray(bytearray(file.read()), dtype=np.uint8)
-        img = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)
-        img = cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
+def translate():
 
-        # Pre-processing image: resize image
-        imgs.append(preProcessImg(img))
-    
-    if imgs:
-        return imgs
-    
-    img = cv2.cvtColor(preProcessImg(cv2.imread('sample.jpg')),cv2.COLOR_BGR2RGB)
-    size = img.shape[1] - 1
-    return [
-        img[:,:int(1/2*size),:],
-        img[:,int(1/4*size):int(3/4*size),:],
-        img[:,int(1/2*size):,:]
-    ]
-# Panorama 
+    st.header("English to ISL Translation")
 
-def panorama():
-
-    st.header("Panorama Image")
-
-    imgs = uploadImages(0)
+    engText = st.text_input('Engligh Text')
 
     # Original Image
-    st.subheader("Original Images")
-
-    original_imgs = st.columns(len(imgs))
-    for (original_img,img) in zip(original_imgs,imgs):
-        with original_img:
-            st.image(img,use_column_width=True)
+    st.subheader("English Text")
 
       
-    st.subheader("Panorama Image")
+    st.subheader("ISL Gloss")
+    st.subheader("ISL Vid")
 
-    stitchy = cv2.Stitcher.create()
-    ok,panorama =stitchy.stitch(imgs)
-
-    if ok != cv2.STITCHER_OK:
-    # checking if the stitching procedure is successful
-    # .stitch() function returns a true value if stitching is
-    # done successfully
-        st.warning("Panorama is not possible for given images in given sequence!!!")
-    else:
-        st.image(panorama,use_column_width=True)
-
+   
 if __name__ == "__main__":
     main()
