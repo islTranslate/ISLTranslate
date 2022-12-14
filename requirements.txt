@@ -1,2 +1,3 @@
 opencv-python-headless
-nltk
+nltk==3.9
+opencv_python_headless
