@@ -38,6 +38,7 @@ def translate():
 
     engText = st.text_input('Engligh Text')
 
+    st.write("Input text is", engText)
     # Original Image
     st.subheader("English Text")
 
